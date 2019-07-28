@@ -1,7 +1,13 @@
 <p>Please complete all of the steps on this page:</p>
 <ul>
-  <li>Start PHQ screener</li>
+  <li>
+    <button>
+       Start PHQ screener
+    </button>
+  </li>
 </ul>
 <%= form_for(:check_in, url: check_in_path, method: :put, id: 1) do |f| %>
+  <p>Over the past 2 weeks, how often have you been bothered by any of the following problems?</p>
+
   <%= f.submit "Complete check in" %>
 <% end %>
