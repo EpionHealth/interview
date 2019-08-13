@@ -6,8 +6,29 @@
     </button>
   </li>
 </ul>
-<%= form_for(:check_in, url: check_in_path, method: :put, id: 1) do |f| %>
+<%= form_for(@form, url: check_in_path, method: :put, id: 1) do |f| %>
+  <% if @form.errors.any? %>
+    <div>
+      <h2><%= pluralize(@form.errors.count, "error") %> prevented this record from being saved:</h2>
+      <ul>
+      <% @form.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <p>Over the past 2 weeks, how often have you been bothered by any of the following problems?</p>
+
+  <p>
+    1. Little interest of pleasure in doing things?
+    <%= render 'phq_fields', question: 1 %>
+  </p>
+
+  <p>
+    2. Feeling down, depressed or hopeless?
+    <%= render 'phq_fields', question: 2 %>
+  </p>
 
   <%= f.submit "Complete check in" %>
 <% end %>
