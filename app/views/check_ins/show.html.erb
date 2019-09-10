@@ -1,7 +1,19 @@
 <p>Please complete all of the steps on this page:</p>
 <ul>
-  <li>Start PHQ screener</li>
+  <li><button id="toggle_form">Start PHQ screener</button></li>
 </ul>
-<%= form_for(:check_in, url: check_in_path, method: :put, id: 1) do |f| %>
+<%= form_for(:check_in, url: check_in_path, method: :put, id: 1,:html => {:id => "check_in_form"}) do |f| %>
+  <p>Over the past 2 weeks, how often have you been bothered by any of the following problems?</p>
+  <p>1. Little interest of pleasure in doing things?</p>
+  <label><input type="checkbox" id="cbox1"> Not at all</label><br>
+  <label><input type="checkbox" id="cbox2"> Several days</label><br>
+  <label><input type="checkbox" id="cbox3"> More than half the days</label><br>
+  <label><input type="checkbox" id="cbox4"> Nearly every day</label><br>
+
+  <p>2. Feeling down, depressed or hopeless?</p>
+  <label><input type="checkbox" id="cbox5"> Not at all</label><br>
+  <label><input type="checkbox" id="cbox6"> Several days</label><br>
+  <label><input type="checkbox" id="cbox7"> More than half the days</label><br>
+  <label><input type="checkbox" id="cbox8"> Nearly every day</label><br>
   <%= f.submit "Complete check in" %>
 <% end %>
