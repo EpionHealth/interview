@@ -8,11 +8,15 @@ class CheckInsController < ApplicationController
   end
 
   def show
-    check_in = CheckIn.find(params[:id])
+    @check_in = CheckIn.find(params[:id])
   end
 
   def update
     check_in = CheckIn.find(params[:id])
     redirect_to new_check_in_path
+  end
+
+  def phq_screener
+    @check_in = CheckIn.find(params[:id])
   end
 end
