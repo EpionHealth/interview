@@ -15,4 +15,10 @@ class CheckInsController < ApplicationController
     CheckIn.find(params[:id])
     redirect_to new_check_in_path
   end
+
+  def depression_screener_new
+    @check_in = CheckIn.find(params[:check_in_id])
+
+    render 'check_ins/screeners/depression/new'
+  end
 end
