@@ -1,3 +1,43 @@
 <p>
   Over the past 2 weeks, how often have you been bothered by any of the following problems?
 </p>
+
+<%= form_with(url: check_in_depression_screener_url(@check_in)) do |form| %>
+  <ol>
+    <li>
+      Little interest or pleasure in doing things?
+      <div>
+        <%= form.radio_button :question_1, 0, { checked: true } %>
+        <%= form.label :question_1_0, 'Not at all' %><br>
+
+        <%= form.radio_button :question_1, 1 %>
+        <%= form.label :question_1_1, 'Several days' %><br>
+
+        <%= form.radio_button :question_1, 2 %>
+        <%= form.label :question_1_2, 'More than half the days' %><br>
+
+        <%= form.radio_button :question_1, 3 %>
+        <%= form.label :question_1_3, 'Nearly every day' %>
+      </div>
+    </li>
+
+    <li>
+      Feeling down, depressed or hopeless?
+      <div>
+        <%= form.radio_button :question_2, 0, { checked: true } %>
+        <%= form.label :question_2_0, 'Not at all' %><br>
+
+        <%= form.radio_button :question_1, 1 %>
+        <%= form.label :question_2_1, 'Several days' %><br>
+
+        <%= form.radio_button :question_1, 2 %>
+        <%= form.label :question_2_2, 'More than half the days' %><br>
+
+        <%= form.radio_button :question_1, 3 %>
+        <%= form.label :question_2_3, 'Nearly every day' %>
+      </div>
+    </li>
+  </ol>
+
+  <%= form.submit 'Continue' %>
+<% end %>
