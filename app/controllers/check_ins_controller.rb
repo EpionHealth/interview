@@ -31,6 +31,14 @@ class CheckInsController < ApplicationController
     @check_in.depression_screen_result = calculate_depression_score
 
     @check_in.save
+
+    if @check_in.depression_screen_result == 'high'
+      notice = 'The depression screener indicated you may have depression. Additional screening should be completed.'
+    else
+      notice = 'The depression screener indicated you do not currently have signs and symptoms of depression.'
+    end
+
+    redirect_to check_in_path(@check_in), notice: notice
   end
 
   private
