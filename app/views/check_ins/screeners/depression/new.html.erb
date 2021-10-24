@@ -4,12 +4,12 @@
 
 <%= form_with(url: depression_screener_check_in_path(@check_in), local: true ) do |form| %>
   <ol>
-    <li>
+    <li class="screener-question">
       Little interest or pleasure in doing things?
       <%= render partial: 'check_ins/screeners/depression/responses', locals: { form: form, question_number: "0" } %>
     </li>
 
-    <li>
+    <li class="screener-question">
       Feeling down, depressed or hopeless?
       <%= render partial: 'check_ins/screeners/depression/responses', locals: { form: form, question_number: "1" } %>
     </li>
