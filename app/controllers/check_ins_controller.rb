@@ -28,9 +28,9 @@ class CheckInsController < ApplicationController
     @scores = params[:response].values
     @scores.map! { |element| element.to_i }
 
-    @result = calculate_depression_score
+    @check_in.depression_screen_result = calculate_depression_score
 
-    puts "Result: #{@result}"
+    @check_in.save
   end
 
   private
