@@ -1,0 +1,13 @@
+<div>
+  <%= form.radio_button "response[#{question_number}]", '0', { checked: true } %>
+  <%= form.label "response[#{question_number}]_0", 'Not at all' %><br>
+
+  <%= form.radio_button "response[#{question_number}]", '1' %>
+  <%= form.label "response[#{question_number}]_1", 'Several days' %><br>
+
+  <%= form.radio_button "response[#{question_number}]", '2' %>
+  <%= form.label "response[#{question_number}]_2", 'More than half the days' %><br>
+
+  <%= form.radio_button "response[#{question_number}]", '3' %>
+  <%= form.label "response[#{question_number}]_3", 'Nearly every day' %>
+</div>
