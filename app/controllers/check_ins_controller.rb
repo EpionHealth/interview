@@ -21,4 +21,25 @@ class CheckInsController < ApplicationController
 
     render 'check_ins/screeners/depression/new'
   end
+
+  def depression_screener_create
+    @check_in = CheckIn.find(params[:check_in_id])
+
+    @scores = params[:response].values
+    @scores.map! { |element| element.to_i }
+
+    @result = calculate_depression_score
+
+    puts "Result: #{@result}"
+  end
+
+  private
+
+  def calculate_depression_score
+    if @scores.any? { |score| score >= 2 }
+      'high'
+    else
+      'low'
+    end
+  end
 end
