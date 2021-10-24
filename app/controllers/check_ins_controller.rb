@@ -17,13 +17,13 @@ class CheckInsController < ApplicationController
   end
 
   def depression_screener_new
-    @check_in = CheckIn.find(params[:check_in_id])
+    @check_in = CheckIn.find(params[:id])
 
     render 'check_ins/screeners/depression/new'
   end
 
   def depression_screener_create
-    @check_in = CheckIn.find(params[:check_in_id])
+    @check_in = CheckIn.find(params[:id])
 
     @scores = params[:response].values
     @scores.map! { |element| element.to_i }

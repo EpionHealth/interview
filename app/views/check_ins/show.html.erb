@@ -1,7 +1,7 @@
 <%= flash[:notice] %>
 <p>Please complete all of the steps on this page:</p>
 <ul>
-  <li><%= link_to 'Start PHQ screener', check_in_screeners_depression_path(@check_in) %></li>
+  <li><%= link_to 'Start PHQ screener', depression_screener_check_in_path(@check_in) %></li>
 </ul>
 <%= form_for(:check_in, url: check_in_path, method: :put, id: 1) do |f| %>
   <%= f.submit "Complete check in" %>
