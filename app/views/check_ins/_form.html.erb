@@ -2,8 +2,9 @@
 <h2 class="text-center my-4">Over the past 2 weeks, how often have you been bothered by any of the following problems?</h2>
 
 <div class="container">
+  <p class="text-center"><strong>Patient Name: <%= @user.full_name %></strong></p>
   <%= form_with model: @check_in, url: check_ins_path, local: true, html: { class: 'needs-validation' } do |f| %>
-    <%= f.hidden_field :patient_id, value: 1 %> 
+    <%= f.hidden_field :patient_id, value: @user.id %> 
     <% @questions.each_with_index do |question, index| %>
       <div class="mb-4">
         <b><%= index + 1 %>) <%= f.label "check_in[answers_attributes][#{index}][question_id]", question.title, class: "form-label" %></b>
