@@ -1,6 +1,5 @@
-<p>Please complete all of the steps on this page:</p>
-<p>Over the past 2 weeks, how often have you been bothered by any of the following problems?</p>
-<button> Start PHQ screener </button>
-<%= form_for(:check_in, url: check_in_path, method: :put, id: 1) do |f| %>
-  <%= f.submit "Complete check in" %>
-<% end %>
+<%if @check_in.high_score?%>
+  <p>Please complete all of the steps on this page:</p>
+<%end%>
+
+<%= link_to 'Start PHQ screener', new_check_in_path, class: 'btn btn-primary btn-lg' %>
