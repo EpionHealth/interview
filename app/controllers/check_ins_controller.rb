@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CheckInsController < ApplicationController
   before_action :set_user, only: :new
   before_action :set_questions, only: [:new]
@@ -19,16 +21,15 @@ class CheckInsController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
   private
 
   def score_message
     if @check_in.high_score?
-      flash[:notice] = "High score detected. Additional screening is recommended."
+      flash[:notice] = 'High score detected. Additional screening is recommended.'
     else
-      flash[:alert] = "No additional screening needed."
+      flash[:alert] = 'No additional screening needed.'
     end
   end
 
@@ -41,10 +42,10 @@ class CheckInsController < ApplicationController
   end
 
   def set_user
-    @user = User.find(1) 
-  end 
+    @user = User.find(1)
+  end
 
   def check_in_params
-    params.require(:check_in).permit(:patient_id, answers_attributes: [:question_id, :title, :_destroy])
+    params.require(:check_in).permit(:patient_id, answers_attributes: %i[question_id title _destroy])
   end
 end

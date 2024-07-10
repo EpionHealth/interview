@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'httparty'
 
 class FetchUserService
@@ -8,19 +10,19 @@ class FetchUserService
     response = fetch_user_data
     create_user(parse_response(response))
   rescue HTTParty::Error => e
-    handle_error("HTTP error", e.message)
+    handle_error('HTTP error', e.message)
   rescue StandardError => e
-    handle_error("General error", e.message)
+    handle_error('General error', e.message)
   end
 
   private
 
   def fetch_user_data
-    self.class.get("/users/1")
+    self.class.get('/users/1')
   end
 
   def create_user(user_data)
-    user_data = user_data.slice("firstName", "lastName", "maidenName", "email", "phone")
+    user_data = user_data.slice('firstName', 'lastName', 'maidenName', 'email', 'phone')
 
     User.create(user_data.transform_keys { |key| key.to_s.underscore })
   end
@@ -29,7 +31,7 @@ class FetchUserService
     if response.success?
       JSON.parse(response.body)
     else
-      handle_error("Error fetching user", response.message)
+      handle_error('Error fetching user', response.message)
     end
   end
 
