@@ -120,3 +120,11 @@ As with part 1, feel free to add as many commits and tests as you feel are appro
 ## Submitting your work
 
 When you are ready for us to review your work, please create a pull request to the `main` branch containing your commits from part 1 and part 2.
+
+## Implementation and setup
+
+To begin, we need to run the rails db:seed command. This command populates default questions and uploads patient data by calling the fetch user service, which retrieves dummy data from an API to get users.
+
+When a user navigates to the new check-in page, they will see two questions. They can select an option for each question and submit the form. Upon submission, the check-in show page opens with a relevant flash message as specified in task 1.
+
+On the backend, when a user accesses the new check-in page, we initialize a CheckIn object and display all the questions. Once the user selects options for all the questions, we send the question IDs along with the selected option titles to the backend. We save this data using nested attributes. The reason for sending the option titles to the backend is to ensure that any future changes to these options do not affect the responses from previous check-ins.

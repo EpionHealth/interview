@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.feature "A patient checks into the app" do
   scenario "for a scheduled appointment" do
+    create(:user)
     visit root_path
 
     click_on "Start check in"
