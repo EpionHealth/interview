@@ -1,2 +1,24 @@
-<h1>PHQ Screening</h1>
-<h2>Over the past 2 weeks, how often have you been bothered by any of the following problems?</h2>
+<div class="questionnaire-container">
+  <h1>Patient Health Questionnaire (PHQ-9)</h1>
+
+  <div>
+    <h3>Over the past 2 weeks, how often have you been bothered by any of the following problems?</h3>
+    <%= form_with url: patient_screenings_path, method: :post do |form| %>
+      <%= form.hidden_field :patient_id, :value => @patient.id%>
+      <div class="md-padding-bottom">
+        <% @questions.each_with_index do |question, index| %>
+          <div class="md-padding-bottom">
+            <%= form.label "question_#{question.id}", "#{index+1}. #{question.description}", class: "question-label" %>
+            <% @answers.each do |answer| %>
+              <div>
+                <%= form.radio_button "question_#{question.id}", answer.value %>
+                <%= form.label "question_#{question.id}_#{answer.value}", answer.description %>
+              </div>
+            <% end %>
+          </div
+        <% end %>
+      </div>
+      <%= form.submit "SUBMIT", class: "btn" %>
+    <% end %>
+  </div>
+</div>

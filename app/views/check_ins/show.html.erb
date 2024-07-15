@@ -1,7 +1,4 @@
-<p>Please complete all of the steps on this page:</p>
-<ul>
-  <li><%= link_to "Start PHQ screener", new_patient_screening_path %></li>
-</ul>
-<%= form_for(:check_in, url: check_in_path, method: :put, id: 1) do |f| %>
-  <%= f.submit "Complete check in" %>
-<% end %>
+<div class="container">
+  <p>Please complete all of the steps on this page:</p>
+  <%= link_to "START PHQ SCREENING", new_patient_screening_path, class: "btn" %>
+</div>
