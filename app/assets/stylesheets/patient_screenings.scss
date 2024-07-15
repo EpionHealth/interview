@@ -1,0 +1,28 @@
+.questionnaire-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 60%;
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 2em 1em;
+    max-width: 750px;
+  
+    .question-label {
+      font-size: 1.2rem;
+    }
+  
+    .btn {
+      background-color: #3771e0;
+      padding: 0.75em 2.5em;
+    }
+  
+    span {
+      color: green;
+    }
+  
+    .home {
+      width: 6%;
+    }
+  }
+  

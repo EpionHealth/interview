@@ -1,3 +1,10 @@
-<%= form_for(:check_in, url: check_ins_path) do |f| %>
-  <%= f.submit "Start check in" %>
-<% end %>
+<div class="container">
+  <%= form_for(:check_in, url: check_ins_path) do |f| %>
+    <h1>Hi, <%= "#{@patient.first_name} #{@patient.last_name}" %></h1>
+    <p>We're glad you're here. Your health and comfort are our top priorities. 
+    We'll guide you through the check-in process to ensure your visit goes smoothly. 
+    If you need any assistance, please don't hesitate to ask our staff.</p>
+
+    <%= f.submit "START", class: "btn" %>
+  <% end %>
+</div>
