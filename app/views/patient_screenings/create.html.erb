@@ -1,0 +1,7 @@
+<div class="questionnaire-container">
+  <h1>Patient Health Questionnaire (PHQ-9)</h1>
+  <h2><span>Status</span>: <%= @screening_service.status %></h2>
+  <p class="md-padding-bottom">Check In Complete</p>
+
+  <%= link_to "Home", new_check_in_path, class: "btn home" %>
+</div>

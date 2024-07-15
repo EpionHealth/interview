@@ -1,6 +1,12 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe CheckInsController, type: :controller do
+  let(:patient) { create(:patient) }
+
+  before do
+    allow(UsersApi).to receive(:fetch).and_return(patient.as_json)
+  end
+
   describe "routing" do
     it { should route(:get, "/check_ins/new").to(action: :new) }
     it { should route(:post, "/check_ins").to(action: :create) }
