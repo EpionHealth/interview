@@ -1,0 +1,26 @@
+<p>Over the past 2 weeks, how often have you been bothered by any of the following problems?</p>
+
+<%= form_with url: check_in_screeners_path(@check_in), method: :post, local: true do |form| %>
+
+  <%= form.hidden_field :patient_id, value: @check_in.patient_id %>
+  <h3><%= @screener.name %></h3>
+
+  <ul>
+    <% @screener.questions.each_with_index do |question, i| %>
+      <li>
+        <div class="question">
+          <label><%= question.prompt %></label>
+          <%= form.label "question_#{i}_answer", "Answer" %>
+          <%= form.radio_button "question[#{question.id}]", 0 %> Not at all
+          <%= form.radio_button "question[#{question.id}]", 1 %> Several days
+          <%= form.radio_button "question[#{question.id}]", 2 %> More than half the days
+          <%= form.radio_button "question[#{question.id}]", 3 %> Nearly every day
+        </div>
+      </li>
+    <% end %>
+
+    <div class="actions">
+      <%= form.submit "Complete check in" %>
+    </div>
+  </ul>
+<% end %>

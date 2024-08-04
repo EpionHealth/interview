@@ -18,12 +18,15 @@ RSpec.describe CheckInsController, type: :controller do
   end
 
   describe "POST #create" do
+    let!(:patient) { create(:patient) }
+    let!(:screener) { create(:screener) }
+
     it "creates a new check_in" do
       expect { post(:create) }.to change(CheckIn, :count).by(1)
     end
 
     it "redirects to the check_in show page" do
-      check_in = create(:check_in, id: 1)
+      check_in = create(:check_in, id: 1, patient_id: patient.id)
       allow(CheckIn).to receive(:create).and_return(check_in)
 
       post :create
@@ -34,6 +37,9 @@ RSpec.describe CheckInsController, type: :controller do
   end
 
   describe "GET #show" do
+    let!(:patient) { create(:patient) }
+    let!(:screener) { create(:screener) }
+
     it "finds the check_in" do
       check_in = create(:check_in, id: 1)
       allow(CheckIn).to receive(:find).with("1").and_return(check_in)
