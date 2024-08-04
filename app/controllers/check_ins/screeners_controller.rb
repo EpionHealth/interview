@@ -4,6 +4,7 @@ module CheckIns
 
     def show
       @screener = Screener.find(params[:id])
+      check_in.check_in_screeners.create(screener_id: @screener.id)
       @questions = @screener.questions
     end
 

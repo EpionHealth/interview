@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe CheckInsController, type: :controller do
+  let!(:patient) { create(:patient) }
+
   describe "routing" do
     it { should route(:get, "/check_ins/new").to(action: :new) }
     it { should route(:post, "/check_ins").to(action: :create) }
@@ -10,6 +12,8 @@ RSpec.describe CheckInsController, type: :controller do
 
   describe "GET #new" do
     it "renders the view" do
+      stub_request(:get, "https://dummyjson.com/users/#{patient.id}")
+        .to_return(status: 200, body: { firstName: patient.name }.to_json)
       get :new
 
       expect(response).to render_template(:new)
@@ -18,7 +22,6 @@ RSpec.describe CheckInsController, type: :controller do
   end
 
   describe "POST #create" do
-    let!(:patient) { create(:patient) }
     let!(:screener) { create(:screener) }
 
     it "creates a new check_in" do

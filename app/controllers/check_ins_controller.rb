@@ -1,12 +1,12 @@
 class CheckInsController < ApplicationController
+  before_action :current_patient, only: [:new]
+
   def show
     @check_in = CheckIn.find(params[:id])
-    screener_name = params[:screener_name] || "PHQ"  # assumption that client has a drop down of screeners and they choose one from available screeners
-    @screener = Screener.find_by(name: screener_name)
-    @check_in.check_in_screeners.create(screener_id: @screener.id)
   end
 
   def new
+    @check_in = CheckIn.new
   end
 
   def create
