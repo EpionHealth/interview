@@ -8,7 +8,7 @@ RSpec.feature "A patient checks into the app" do
 
   scenario "for a scheduled appointment" do
     stub_request(:get, "https://dummyjson.com/users/#{patient.id}")
-      .to_return(status: 200, body: { firstName: patient.name }.to_json)
+      .to_return(status: 200, body: {firstName: patient.name}.to_json)
 
     visit root_path
 
@@ -23,12 +23,12 @@ RSpec.feature "A patient checks into the app" do
     expect(page).to have_content("Over the past 2 weeks, how often have you been bothered by any of the following problems?")
     expect(page).to have_content("Little interest or pleasure in doing things?")
 
-    within('.question', text: 'Little interest or pleasure in doing things?') do
-      choose "question[#{question_1.id}]", option: '0'
+    within(".question", text: "Little interest or pleasure in doing things?") do
+      choose "question[#{question_1.id}]", option: "0"
     end
 
-    within('.question', text: 'Feeling down, depressed or hopeless?') do
-      choose "question[#{question_2.id}]", option: '1'
+    within(".question", text: "Feeling down, depressed or hopeless?") do
+      choose "question[#{question_2.id}]", option: "1"
     end
 
     click_on "Complete check in"
@@ -38,7 +38,7 @@ RSpec.feature "A patient checks into the app" do
 
   scenario "Additional screening is required" do
     stub_request(:get, "https://dummyjson.com/users/#{patient.id}")
-      .to_return(status: 200, body: { firstName: patient.name }.to_json)
+      .to_return(status: 200, body: {firstName: patient.name}.to_json)
 
     visit root_path
 
@@ -53,12 +53,12 @@ RSpec.feature "A patient checks into the app" do
     expect(page).to have_content("Over the past 2 weeks, how often have you been bothered by any of the following problems?")
     expect(page).to have_content("Little interest or pleasure in doing things?")
 
-    within('.question', text: 'Little interest or pleasure in doing things?') do
-      choose "question[#{question_1.id}]", option: '2'
+    within(".question", text: "Little interest or pleasure in doing things?") do
+      choose "question[#{question_1.id}]", option: "2"
     end
 
-    within('.question', text: 'Feeling down, depressed or hopeless?') do
-      choose "question[#{question_2.id}]", option: '3'
+    within(".question", text: "Feeling down, depressed or hopeless?") do
+      choose "question[#{question_2.id}]", option: "3"
     end
 
     click_on "Complete check in"

@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe CheckInsController, type: :controller do
   let!(:patient) { create(:patient) }
@@ -13,7 +13,7 @@ RSpec.describe CheckInsController, type: :controller do
   describe "GET #new" do
     it "renders the view" do
       stub_request(:get, "https://dummyjson.com/users/#{patient.id}")
-        .to_return(status: 200, body: { firstName: patient.name }.to_json)
+        .to_return(status: 200, body: {firstName: patient.name}.to_json)
       get :new
 
       expect(response).to render_template(:new)
@@ -47,7 +47,7 @@ RSpec.describe CheckInsController, type: :controller do
       check_in = create(:check_in, id: 1)
       allow(CheckIn).to receive(:find).with("1").and_return(check_in)
 
-      get :show, params: { id: 1 }
+      get :show, params: {id: 1}
 
       expect(CheckIn).to have_received(:find).with("1")
     end
@@ -56,7 +56,7 @@ RSpec.describe CheckInsController, type: :controller do
       check_in = create(:check_in, id: 1)
       allow(CheckIn).to receive(:create).and_return(check_in)
 
-      get :show, params: { id: 1 }
+      get :show, params: {id: 1}
 
       expect(response).to render_template(:show)
       expect(response).to render_with_layout(:application)
@@ -68,7 +68,7 @@ RSpec.describe CheckInsController, type: :controller do
       check_in = create(:check_in, id: 1)
       allow(CheckIn).to receive(:find).with("1").and_return(check_in)
 
-      put :update, params: { id: 1 }
+      put :update, params: {id: 1}
 
       expect(CheckIn).to have_received(:find).with("1")
     end
@@ -77,7 +77,7 @@ RSpec.describe CheckInsController, type: :controller do
       check_in = create(:check_in, id: 1)
       allow(CheckIn).to receive(:find).with("1").and_return(check_in)
 
-      put :update, params: { id: 1 }
+      put :update, params: {id: 1}
 
       expect(response).to redirect_to new_check_in_path
     end

@@ -1,8 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
 module CheckIns
   RSpec.describe ScreenersController, type: :controller do
-    describe '#create' do
+    describe "#create" do
       let(:check_in) { create(:check_in) }
       let!(:check_in_screener) { create(:check_in_screener, check_in: check_in) }
       let!(:screener) { check_in.screeners.last }
@@ -16,8 +16,8 @@ module CheckIns
         }
       end
 
-      it 'saves the answers and redirects to the result path' do
-        post :create, params: { check_in_id: check_in.id, question: answer_params }
+      it "saves the answers and redirects to the result path" do
+        post :create, params: {check_in_id: check_in.id, question: answer_params}
 
         expect(check_in.answers.count).to eq(2)
         expect(check_in.answers.first.choice).to eq(2)

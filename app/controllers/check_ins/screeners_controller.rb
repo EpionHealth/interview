@@ -10,8 +10,8 @@ module CheckIns
 
     def create
       params[:question].each do |question_id, answer|
-         ans = check_in.answers.new(question_id: question_id, choice: answer)
-         ans.save
+        ans = check_in.answers.new(question_id: question_id, choice: answer)
+        ans.save
       end
       redirect_to check_in_screener_result_path(check_in, check_in.screeners.first)
     end
