@@ -1,3 +1,5 @@
+<h1>Welcome, <%= @patient.full_name %>!</h1>
+
 <p>Over the past 2 weeks, how often have you been bothered by any of the following problems?</p>
 
 <%= form_for(:phq_screener, url: phq_screeners_path(check_in_id: params[:check_in_id]), method: :post) do |f| %>

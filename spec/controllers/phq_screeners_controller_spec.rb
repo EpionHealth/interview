@@ -1,5 +1,10 @@
 RSpec.describe PhqScreenersController, type: :controller do
   let(:check_in) { create(:check_in) }
+  let(:patient_data) { { "firstName" => "Terry", "lastName" => "Medhurst" } }
+
+  before do
+    allow(Net::HTTP).to receive(:get).and_return(patient_data.to_json)
+  end
 
   describe "GET #new" do
     it "renders the new template" do

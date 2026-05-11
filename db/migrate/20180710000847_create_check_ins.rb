@@ -6,3 +6,9 @@ class CreateCheckIns < ActiveRecord::Migration[5.2]
     end
   end
 end
+
+class AddPatientIdToCheckIns < ActiveRecord::Migration[5.2]
+  def change
+    add_column :check_ins, :patient_id, :integer, null: false, default: 1
+  end
+end

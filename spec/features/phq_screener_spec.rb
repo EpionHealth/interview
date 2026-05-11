@@ -1,8 +1,18 @@
 RSpec.describe "PHQ Screener", type: :feature do
   let(:check_in) { create(:check_in) }
+  let(:patient_data) { { "firstName" => "Terry", "lastName" => "Medhurst" } }
 
   before do
+    allow(Net::HTTP).to receive(:get).and_return(patient_data.to_json)
     visit new_phq_screener_path(check_in_id: check_in.id)
+  end
+
+  it "displays a personalized greeting" do
+    expect(page).to have_text("Welcome, Terry Medhurst!")
+  end
+
+  it "displays the PHQ-2 instructions" do
+    expect(page).to have_text("Over the past 2 weeks, how often have you been bothered by any of the following problems?")
   end
 
   it "displays the PHQ-2 instructions" do

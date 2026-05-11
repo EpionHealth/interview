@@ -1,4 +1,6 @@
 class PhqScreenersController < ApplicationController
+  before_action :set_patient
+
   def new
   end
 
@@ -18,12 +20,16 @@ class PhqScreenersController < ApplicationController
 
   private
 
-  def phq_screener_params
-    params.require(:phq_screener).permit(:question_1_score, :question_2_score)
+  def set_patient
+    @patient = PatientService.find(current_check_in.patient_id)
   end
 
   def current_check_in
     @current_check_in ||= CheckIn.find(params[:check_in_id])
+  end
+
+  def phq_screener_params
+    params.require(:phq_screener).permit(:question_1_score, :question_2_score)
   end
 
   def screening_message(screener)
