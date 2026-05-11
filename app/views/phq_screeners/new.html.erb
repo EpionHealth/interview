@@ -1,5 +1,25 @@
 <p>Over the past 2 weeks, how often have you been bothered by any of the following problems?</p>
 
-<%= form_for(:phq_screener, url: phq_screeners_path, method: :post) do |f| %>
+<%= form_for(:phq_screener, url: phq_screeners_path(check_in_id: params[:check_in_id]), method: :post) do |f| %>
+  <fieldset>
+    <legend>1. Little interest or pleasure in doing things?</legend>
+    <% PhqScreener::SCORE_OPTIONS.each do |label, value| %>
+      <div>
+        <%= f.radio_button :question_1_score, value, id: "q1_#{value}" %>
+        <%= label_tag "q1_#{value}", label %>
+      </div>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
+    <legend>2. Feeling down, depressed or hopeless?</legend>
+    <% PhqScreener::SCORE_OPTIONS.each do |label, value| %>
+      <div>
+        <%= f.radio_button :question_2_score, value, id: "q2_#{value}" %>
+        <%= label_tag "q2_#{value}", label %>
+      </div>
+    <% end %>
+  </fieldset>
+
   <%= f.submit "Submit" %>
 <% end %>
