@@ -1,7 +1,11 @@
 <p>Please complete all of the steps on this page:</p>
 <ul>
-  <li><%= link_to "Start PHQ screener", new_phq_screener_path %></li>
+  <li><%= link_to "Start PHQ screener", new_phq_screener_path(check_in_id: @check_in.id) %></li>
 </ul>
-<%= form_for(:check_in, url: check_in_path, method: :put, id: 1) do |f| %>
+<%= form_for(@check_in, url: check_in_path(@check_in), method: :put, id: 1) do |f| %>
   <%= f.submit "Complete check in" %>
+<% end %>
+
+<% if notice %>
+  <p><%= notice %></p>
 <% end %>
